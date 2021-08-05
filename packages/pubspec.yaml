@@ -1,0 +1,45 @@
+name: newspackage
+description: Dart package to manage {Feature} data and domain layers.
+version: 0.0.1+1
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  # Scope Packages
+  flutter:
+    sdk: flutter
+  errors:
+    git:
+      url: git://github.com/NoScopeDevs/errors
+  network_manager:
+    git:
+      url: git://github.com/NoScopeDevs/network_manager
+  dio:
+
+  meta:
+  path:
+  dartz: ^0.10.0-nullsafety.0
+  pretty_dio_logger: ^1.2.0-beta-1
+  #retrofit: ^2.0.0-beta1
+  equatable: ^2.0.0
+  #json_annotation: ^4.0.1
+  #newsapi: 2.0.0
+  #flutter_news_api:
+  freezed_annotation:
+  
+
+dev_dependencies:
+  #retrofit_generator: ^2.0.0-beta2
+  build_runner: ^1.10.0
+  #json_serializable: ^3.3.0
+  freezed:
+  test: ^1.16.8
+  pedantic: ^1.11.0
+
+  # testing
+  mockito:
+
+  # static analysis
+  very_good_analysis:
