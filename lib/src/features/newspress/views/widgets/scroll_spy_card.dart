@@ -113,15 +113,24 @@ class NewsCard extends ConsumerWidget {
       return LCard(
         border: Border.all(color: Colors.pink),
         elevation: 5.0,
-        header: LCardHeader(title: news.title),
+        header: LCardHeader(title: news.title ?? ''),
         footer: LCardFooter(
+          showSeperator: true,
           actions: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.person_pin_circle_rounded),
+                Image.asset(
+                  'assets/images/twitter_logo.png',
+                  width: 15,
+                  height: 15,
+                ),
                 Text(': '),
                 IconButton(
-                  icon: Text(news.twitterAccount),
+                  icon: Text(news.twitterAccount ?? '',
+                  softWrap: true,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,),
                   iconSize: 15,
                   color: Colors.blue,
                   onPressed: () {
@@ -133,12 +142,15 @@ class NewsCard extends ConsumerWidget {
           ],
         ),
         image: LCardImage(
-          image: NetworkImage(news.media),
+          image: news.media == null
+              ? NetworkImage(
+                  'http://www.newdesignfile.com/postpic/2015/02/funny-no-image-available-icon_68017.jpg')
+              : NetworkImage(news.media),
           fit: BoxFit.cover,
         ),
         body: LCardBody(
           title: news.publishedDate.toString().substring(0, 16),
-          subTitle: news.summary,
+          subTitle: news.summary ?? '',
         ),
       );
     }

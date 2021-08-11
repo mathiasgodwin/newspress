@@ -232,7 +232,7 @@ class LCardHeader extends StatelessWidget {
               : BorderSide.none,
         ),
       ),
-      child: Text(title ?? '', style: _baseStyle),
+      child: Text(this.title ?? '', style: _baseStyle),
     );
   }
 }
@@ -276,7 +276,7 @@ class LCardImage extends StatelessWidget {
         child: child ?? Container(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: image ?? NetworkImage(''),
+            image: image!,
             colorFilter: colorFilter,
             fit: fit ?? BoxFit.fill,
             alignment: alignment ?? Alignment.topCenter,
@@ -324,7 +324,7 @@ class LCardBody extends StatelessWidget {
               ? Padding(
                   padding: titleMargin ?? const EdgeInsets.only(bottom: 6.0),
                   child: Text(
-                    title!,
+                    title ?? '',
                     style:
                         _baseStyle.merge(titleStyle ?? TextStyle(fontSize: 15)),
                   ),
