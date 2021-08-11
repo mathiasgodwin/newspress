@@ -17,6 +17,6 @@ class GetSearch {
 
   /// Callable class method
   // ignore: lines_longer_than_80_chars
-  Future<Either<Failure, List<Article>>?> call(String? q) async => await _repository.getSearch(q);
+  Future<Either<Failure, ArticleResponse>?> call(String? q) async => await _repository.getSearch(q);
   
 }

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:newspress/src/features/newspress/views/news_home_page.dart';
+// import 'package:newspress/src/features/newspress/views/news_home_page.dart';
+// import '../widgets/scroll_spy_card.dart';
 
 class SwipePage extends StatelessWidget {
+  dynamic nCard;
+  SwipePage({
+    Key? key,
+    this.nCard,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +33,7 @@ class SwipePage extends StatelessWidget {
           onPressed: () => Navigator.maybePop(context),
         ),
       ),
-      body: NewsPage(),
+      body: nCard,
     );
   }
 }

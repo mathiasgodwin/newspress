@@ -1,3 +1,5 @@
+
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -18,17 +20,19 @@ Widget settingsIcon(
         InkWell(
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
-          onTap: () {
-            HapticFeedback.lightImpact();
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return SwipePage();
-                },
-              ),
-            );
-          },
+          onTap:null 
+          // () {
+          //   HapticFeedback.lightImpact();
+          //   Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) {
+          //         return ;
+          //       },
+          //     ),
+          //   );
+          // },
+          ,
           child: ClipRRect(
             borderRadius: BorderRadius.all(
               Radius.circular(99),

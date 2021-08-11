@@ -6,13 +6,14 @@ import 'package:errors/errors.dart';
 // import 'package:newspackage/src/data/model/article.dart';
 import 'package:newspackage/src/data/models/article_response.dart';
 // import 'package:newsapi/newsapi.dart' show NewsApi;
-
+// import '';
 ///
 abstract class IRemoteDataSource {
-  Future<List<Article>?> getHeadLine(String? country, String? category);
-  Future<List<Article>?> getSearch(String? q);
+  Future<ArticleResponse>? getHeadLine(String? country, String? category);
+  Future<ArticleResponse>? getSearch(String? q);
 }
 
+///
 ///
 
 ///
@@ -29,10 +30,11 @@ class RemoteDataSource implements IRemoteDataSource {
   final _client = Dio();
 
   @override
-  Future<List<Article>?> getSearch(String? q) async {
+  Future<ArticleResponse>? getSearch(String? q) async {
+    const apikey = String.fromEnvironment('apiKey');
     try {
-      final url =
-          "https://free-news.p.rapidapi.com/v1/search?q=$q&lang=en";
+      final url = "https://free-news.p.rapidapi.com/v1/search?q=$q&lang=en";
+      
 
       final result = await _client.fetch(
         RequestOptions(
@@ -40,14 +42,14 @@ class RemoteDataSource implements IRemoteDataSource {
             method: 'Get',
             responseType: ResponseType.json,
             headers: {
-              "x-rapidapi-key":
-                  "71342e75damsh GET THE KEY PLS jsnecf203040da2",
+              "x-rapidapi-key": apikey,
               "x-rapidapi-host": "free-news.p.rapidapi.com"
             }),
       );
 
       if (result.statusCode == 200) {
-        return ArticleResponse.fromJson(result.toString()).articles;
+        print(result.toString());
+        return ArticleResponse.fromJson(result.toString());
       } else {
         throw ServerException();
       }
@@ -59,12 +61,12 @@ class RemoteDataSource implements IRemoteDataSource {
 
   @override
   // ignore: lines_longer_than_80_chars
-  Future<List<Article>?> getHeadLine(String? country, String? category) async {
+  Future<ArticleResponse>? getHeadLine(String? country, String? category) async {
+    const apikey = String.fromEnvironment('apiKey');
     try {
       // ignore: unnecessary_brace_in_string_interps
       final url =
           "https://free-news.p.rapidapi.com/v1/search?topic=$category&lang=en";
-
 
       final result = await _client.fetch(
         RequestOptions(
@@ -72,8 +74,7 @@ class RemoteDataSource implements IRemoteDataSource {
             method: 'Get',
             responseType: ResponseType.json,
             headers: {
-              "x-rapidapi-key":
-                  "71342e75damsh GET THE KEY PLS jsnecf203040da2",
+              "x-rapidapi-key": apikey,
               "x-rapidapi-host": "free-news.p.rapidapi.com"
             }),
       );
@@ -81,10 +82,9 @@ class RemoteDataSource implements IRemoteDataSource {
       // print(result);
 
       if (result.statusCode == 200) {
+        print(result.toString());
 
-        print((result.toString()));
-
-        return ArticleResponse.fromJson(result.data).articles;
+        return ArticleResponse.fromJson(result.toString());
       } else {
         throw ServerException();
       }

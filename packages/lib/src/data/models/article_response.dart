@@ -15,14 +15,15 @@ class ArticleResponse {
     required this.userInput,
   });
 
-  final String status;
-  final int totalHits;
-  final int page;
-  final int totalPages;
-  final int pageSize;
+  final String? status;
+  final int? totalHits;
+  final int? page;
+  final int? totalPages;
+  final int? pageSize;
   final List<Article> articles;
-  final UserInput userInput;
+  final UserInput? userInput;
 
+  // ignore: public_member_api_docs
   ArticleResponse copyWith({
     String? status,
     int? totalHits,
@@ -47,25 +48,26 @@ class ArticleResponse {
 
   String toJson() => json.encode(toMap());
 
-  factory ArticleResponse.fromMap(Map<String, dynamic> json) => ArticleResponse(
-        status: json["status"],
-        totalHits: json["total_hits"],
-        page: json["page"],
-        totalPages: json["total_pages"],
-        pageSize: json["page_size"],
+  factory ArticleResponse.fromMap(Map<String, dynamic>? json) =>
+      ArticleResponse(
+        status: json!['status'],
+        totalHits: json['total_hits'],
+        page: json['page'],
+        totalPages: json['total_pages'],
+        pageSize: json['page_size'],
         articles:
-            List<Article>.from(json["articles"].map((x) => Article.fromMap(x))),
-        userInput: UserInput.fromMap(json["user_input"]),
+            List<Article>.from(json['articles'].map((x) => Article.fromMap(x))),
+        userInput: UserInput.fromMap(json['user_input']),
       );
 
   Map<String, dynamic> toMap() => {
-        "status": status,
-        "total_hits": totalHits,
-        "page": page,
-        "total_pages": totalPages,
-        "page_size": pageSize,
-        "articles": List<dynamic>.from(articles.map((x) => x.toMap())),
-        "user_input": userInput.toMap(),
+        'status': status,
+        'total_hits': totalHits,
+        'page': page,
+        'total_pages': totalPages,
+        'page_size': pageSize,
+        'articles': List<dynamic>.from(articles.map((x) => x.toMap())),
+        'user_input': userInput!.toMap(),
       };
 }
 
@@ -91,28 +93,28 @@ class Article {
     required this.id,
   });
 
-  final String title;
+  final String? title;
   final dynamic author;
   final DateTime publishedDate;
-  final String publishedDatePrecision;
-  final String link;
-  final String cleanUrl;
-  final String summary;
-  final String rights;
-  final int rank;
-  final String topic;
-  final String country;
-  final String language;
+  final String? publishedDatePrecision;
+  final String? link;
+  final String? cleanUrl;
+  final String? summary;
+  final String? rights;
+  final int? rank;
+  final String? topic;
+  final String? country;
+  final String? language;
   final List<dynamic> authors;
-  final String media;
-  final bool isOpinion;
-  final String twitterAccount;
-  final double score;
-  final String id;
+  final String? media;
+  final bool? isOpinion;
+  final String? twitterAccount;
+  final double? score;
+  final String? id;
 
   Article copyWith({
     String? title,
-    dynamic author,
+    dynamic? author,
     DateTime? publishedDate,
     String? publishedDatePrecision,
     String? link,
@@ -132,7 +134,7 @@ class Article {
   }) =>
       Article(
         title: title ?? this.title,
-        author: author ?? this.author,
+        author: author ?? 'Not available',
         publishedDate: publishedDate ?? this.publishedDate,
         publishedDatePrecision:
             publishedDatePrecision ?? this.publishedDatePrecision,
@@ -147,7 +149,7 @@ class Article {
         authors: authors ?? this.authors,
         media: media ?? this.media,
         isOpinion: isOpinion ?? this.isOpinion,
-        twitterAccount: twitterAccount ?? this.twitterAccount,
+        twitterAccount: twitterAccount ?? this.twitterAccount ,
         score: score ?? this.score,
         id: id ?? this.id,
       );
@@ -157,45 +159,49 @@ class Article {
   String toJson() => json.encode(toMap());
 
   factory Article.fromMap(Map<String, dynamic> json) => Article(
-        title: json["title"],
-        author: json["author"],
-        publishedDate: DateTime.parse(json["published_date"]),
-        publishedDatePrecision: json["published_date_precision"],
-        link: json["link"],
-        cleanUrl: json["clean_url"],
-        summary: json["summary"],
-        rights: json["rights"],
-        rank: json["rank"],
-        topic: json["topic"],
-        country: json["country"] == null ? null : json["country"],
-        language: json["language"],
+        title: json['title'],
+        author: json['author'],
+        publishedDate: DateTime.parse(json['published_date']),
+        publishedDatePrecision: json['published_date_precision'],
+        link: json['link'],
+        cleanUrl: json['clean_url'],
+        summary: json['summary'],
+        rights: json['rights'],
+        rank: json['rank'],
+        topic: json['topic'],
+        country: json['country'],
+
+        language: json['language'],
         authors: List<dynamic>.from(json["authors"].map((x) => x)),
-        media: json["media"],
-        isOpinion: json["is_opinion"],
-        twitterAccount: json["twitter_account"],
-        score: json["_score"].toDouble(),
-        id: json["_id"],
+        media: json['media'],
+        isOpinion: json['is_opinion'],
+        twitterAccount: json['twitter_account'],
+        // ignore: avoid_dynamic_calls
+        score: json['_score'].toDouble(),
+        id: json['_id'],
       );
 
   Map<String, dynamic> toMap() => {
-        "title": title,
-        "author": author,
-        "published_date": publishedDate.toIso8601String(),
-        "published_date_precision": publishedDatePrecision,
-        "link": link,
-        "clean_url": cleanUrl,
-        "summary": summary,
-        "rights": rights,
-        "rank": rank,
-        "topic": topic,
-        "country": country == null ? null : country,
-        "language": language,
-        "authors": List<dynamic>.from(authors.map((x) => x)),
-        "media": media,
-        "is_opinion": isOpinion,
-        "twitter_account": twitterAccount,
-        "_score": score,
-        "_id": id,
+        'title': title ?? title,
+        'author': author ?? ' ',
+        'published_date': publishedDate.toIso8601String(),
+        'published_date_precision': publishedDatePrecision,
+        'link': link ?? link,
+        'clean_url': cleanUrl ?? cleanUrl,
+        'summary': summary ?? summary,
+        'rights': rights ?? rights,
+        'rank': rank ?? rank,
+        'topic': topic ?? topic,
+        // ignore: unnecessary_null_comparison
+        'country': country ?? country,
+
+        'language': language ?? language,
+        // "authors": List<dynamic>.from(authors.map((x) => x)),
+        'media': media ?? media,
+        'is_opinion': isOpinion ?? isOpinion,
+        'twitter_account': twitterAccount ?? twitterAccount,
+        '_score': score,
+        '_id': id,
       };
 }
 
@@ -209,12 +215,12 @@ class UserInput {
     required this.size,
   });
 
-  final String q;
-  final String lang;
+  final String? q;
+  final String? lang;
   final DateTime from;
-  final String sortBy;
-  final int page;
-  final int size;
+  final String? sortBy;
+  final int? page;
+  final int? size;
 
   UserInput copyWith({
     String? q,
@@ -227,6 +233,7 @@ class UserInput {
       UserInput(
         q: q ?? this.q,
         lang: lang ?? this.lang,
+
         from: from ?? this.from,
         sortBy: sortBy ?? this.sortBy,
         page: page ?? this.page,
@@ -238,20 +245,20 @@ class UserInput {
   String toJson() => json.encode(toMap());
 
   factory UserInput.fromMap(Map<String, dynamic> json) => UserInput(
-        q: json["q"],
-        lang: json["lang"],
-        from: DateTime.parse(json["from"]),
-        sortBy: json["sort_by"],
-        page: json["page"],
-        size: json["size"],
+        q: json['q'],
+        lang: json['lang'],
+        from: DateTime.parse(json['from']),
+        sortBy: json['sort_by'],
+        page: json['page'],
+        size: json['size'],
       );
 
   Map<String, dynamic> toMap() => {
-        "q": q,
-        "lang": lang,
-        "from": from.toIso8601String(),
-        "sort_by": sortBy,
-        "page": page,
-        "size": size,
+        'q': q ?? ' ',
+        'lang': lang ?? ' ',
+        'from': from.toIso8601String(),
+        'sort_by': sortBy ?? ' ',
+        'page': page ?? 1,
+        'size': size ?? 1,
       };
 }

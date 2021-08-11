@@ -16,14 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NewspressStateTearOff {
   const _$NewspressStateTearOff();
 
-  _NewspressData data({required List<Article> news}) {
+  _NewspressData data({required ArticleResponse news}) {
     return _NewspressData(
       news: news,
     );
-  }
-
-  _NewspressInitial initial() {
-    return const _NewspressInitial();
   }
 
   _NewspressLoading loading() {
@@ -44,16 +40,14 @@ const $NewspressState = _$NewspressStateTearOff();
 mixin _$NewspressState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Article> news) data,
-    required TResult Function() initial,
+    required TResult Function(ArticleResponse news) data,
     required TResult Function() loading,
     required TResult Function(String? message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Article> news)? data,
-    TResult Function()? initial,
+    TResult Function(ArticleResponse news)? data,
     TResult Function()? loading,
     TResult Function(String? message)? error,
     required TResult orElse(),
@@ -62,7 +56,6 @@ mixin _$NewspressState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NewspressData value) data,
-    required TResult Function(_NewspressInitial value) initial,
     required TResult Function(_NewspressLoading value) loading,
     required TResult Function(_NewspressError value) error,
   }) =>
@@ -70,7 +63,6 @@ mixin _$NewspressState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NewspressData value)? data,
-    TResult Function(_NewspressInitial value)? initial,
     TResult Function(_NewspressLoading value)? loading,
     TResult Function(_NewspressError value)? error,
     required TResult orElse(),
@@ -100,7 +92,7 @@ abstract class _$NewspressDataCopyWith<$Res> {
   factory _$NewspressDataCopyWith(
           _NewspressData value, $Res Function(_NewspressData) then) =
       __$NewspressDataCopyWithImpl<$Res>;
-  $Res call({List<Article> news});
+  $Res call({ArticleResponse news});
 }
 
 /// @nodoc
@@ -122,7 +114,7 @@ class __$NewspressDataCopyWithImpl<$Res>
       news: news == freezed
           ? _value.news
           : news // ignore: cast_nullable_to_non_nullable
-              as List<Article>,
+              as ArticleResponse,
     ));
   }
 }
@@ -133,7 +125,7 @@ class _$_NewspressData implements _NewspressData {
   const _$_NewspressData({required this.news});
 
   @override
-  final List<Article> news;
+  final ArticleResponse news;
 
   @override
   String toString() {
@@ -160,8 +152,7 @@ class _$_NewspressData implements _NewspressData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Article> news) data,
-    required TResult Function() initial,
+    required TResult Function(ArticleResponse news) data,
     required TResult Function() loading,
     required TResult Function(String? message) error,
   }) {
@@ -171,8 +162,7 @@ class _$_NewspressData implements _NewspressData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Article> news)? data,
-    TResult Function()? initial,
+    TResult Function(ArticleResponse news)? data,
     TResult Function()? loading,
     TResult Function(String? message)? error,
     required TResult orElse(),
@@ -187,7 +177,6 @@ class _$_NewspressData implements _NewspressData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NewspressData value) data,
-    required TResult Function(_NewspressInitial value) initial,
     required TResult Function(_NewspressLoading value) loading,
     required TResult Function(_NewspressError value) error,
   }) {
@@ -198,7 +187,6 @@ class _$_NewspressData implements _NewspressData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NewspressData value)? data,
-    TResult Function(_NewspressInitial value)? initial,
     TResult Function(_NewspressLoading value)? loading,
     TResult Function(_NewspressError value)? error,
     required TResult orElse(),
@@ -211,107 +199,13 @@ class _$_NewspressData implements _NewspressData {
 }
 
 abstract class _NewspressData implements NewspressState {
-  const factory _NewspressData({required List<Article> news}) =
+  const factory _NewspressData({required ArticleResponse news}) =
       _$_NewspressData;
 
-  List<Article> get news => throw _privateConstructorUsedError;
+  ArticleResponse get news => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$NewspressDataCopyWith<_NewspressData> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$NewspressInitialCopyWith<$Res> {
-  factory _$NewspressInitialCopyWith(
-          _NewspressInitial value, $Res Function(_NewspressInitial) then) =
-      __$NewspressInitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$NewspressInitialCopyWithImpl<$Res>
-    extends _$NewspressStateCopyWithImpl<$Res>
-    implements _$NewspressInitialCopyWith<$Res> {
-  __$NewspressInitialCopyWithImpl(
-      _NewspressInitial _value, $Res Function(_NewspressInitial) _then)
-      : super(_value, (v) => _then(v as _NewspressInitial));
-
-  @override
-  _NewspressInitial get _value => super._value as _NewspressInitial;
-}
-
-/// @nodoc
-
-class _$_NewspressInitial implements _NewspressInitial {
-  const _$_NewspressInitial();
-
-  @override
-  String toString() {
-    return 'NewspressState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NewspressInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Article> news) data,
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String? message) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Article> news)? data,
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String? message)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NewspressData value) data,
-    required TResult Function(_NewspressInitial value) initial,
-    required TResult Function(_NewspressLoading value) loading,
-    required TResult Function(_NewspressError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NewspressData value)? data,
-    TResult Function(_NewspressInitial value)? initial,
-    TResult Function(_NewspressLoading value)? loading,
-    TResult Function(_NewspressError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _NewspressInitial implements NewspressState {
-  const factory _NewspressInitial() = _$_NewspressInitial;
 }
 
 /// @nodoc
@@ -354,8 +248,7 @@ class _$_NewspressLoading implements _NewspressLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Article> news) data,
-    required TResult Function() initial,
+    required TResult Function(ArticleResponse news) data,
     required TResult Function() loading,
     required TResult Function(String? message) error,
   }) {
@@ -365,8 +258,7 @@ class _$_NewspressLoading implements _NewspressLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Article> news)? data,
-    TResult Function()? initial,
+    TResult Function(ArticleResponse news)? data,
     TResult Function()? loading,
     TResult Function(String? message)? error,
     required TResult orElse(),
@@ -381,7 +273,6 @@ class _$_NewspressLoading implements _NewspressLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NewspressData value) data,
-    required TResult Function(_NewspressInitial value) initial,
     required TResult Function(_NewspressLoading value) loading,
     required TResult Function(_NewspressError value) error,
   }) {
@@ -392,7 +283,6 @@ class _$_NewspressLoading implements _NewspressLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NewspressData value)? data,
-    TResult Function(_NewspressInitial value)? initial,
     TResult Function(_NewspressLoading value)? loading,
     TResult Function(_NewspressError value)? error,
     required TResult orElse(),
@@ -473,8 +363,7 @@ class _$_NewspressError implements _NewspressError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Article> news) data,
-    required TResult Function() initial,
+    required TResult Function(ArticleResponse news) data,
     required TResult Function() loading,
     required TResult Function(String? message) error,
   }) {
@@ -484,8 +373,7 @@ class _$_NewspressError implements _NewspressError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Article> news)? data,
-    TResult Function()? initial,
+    TResult Function(ArticleResponse news)? data,
     TResult Function()? loading,
     TResult Function(String? message)? error,
     required TResult orElse(),
@@ -500,7 +388,6 @@ class _$_NewspressError implements _NewspressError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NewspressData value) data,
-    required TResult Function(_NewspressInitial value) initial,
     required TResult Function(_NewspressLoading value) loading,
     required TResult Function(_NewspressError value) error,
   }) {
@@ -511,7 +398,6 @@ class _$_NewspressError implements _NewspressError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NewspressData value)? data,
-    TResult Function(_NewspressInitial value)? initial,
     TResult Function(_NewspressLoading value)? loading,
     TResult Function(_NewspressError value)? error,
     required TResult orElse(),

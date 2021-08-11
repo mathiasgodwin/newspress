@@ -1,4 +1,4 @@
-package com.example.newspress
+package com.gwinivac.newspress
 
 import io.flutter.embedding.android.FlutterActivity
 

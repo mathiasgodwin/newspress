@@ -6,9 +6,9 @@ import 'package:newspackage/src/data/models/article_response.dart';
 /// Repository interface for newspress
 abstract class INewspressRepository {
   // ignore: public_member_api_docs
-  Future<Either<Failure, List<Article>>?> getHeadLine(
+  Future<Either<Failure, ArticleResponse>?> getHeadLine(
       String? country, String? category);
   // ignore: lines_longer_than_80_chars
   // ignore: public_member_api_docs
-  Future<Either<Failure, List<Article>>?> getSearch(String? q);
+  Future<Either<Failure, ArticleResponse>?> getSearch(String? q);
 }

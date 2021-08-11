@@ -13,10 +13,10 @@ extension NewspressGetters on NewspressState {
 @freezed
 abstract class NewspressState with _$NewspressState {
   /// Data is present state
-  const factory NewspressState.data({required List<Article> news}) = _NewspressData;
+  const factory NewspressState.data({required ArticleResponse news}) = _NewspressData;
 
   /// Initial/default state
-  const factory NewspressState.initial() = _NewspressInitial;
+  // const factory NewspressState.initial() = _NewspressInitial;
 
   /// Data is loading state
   const factory NewspressState.loading() = _NewspressLoading;

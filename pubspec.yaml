@@ -18,6 +18,9 @@ dependencies:
   formz: ^0.4.0
   flutter_riverpod: ^0.14.0
   freezed_annotation: ^0.14.2
+  #custom_refresh_indicator: ^1.0.0
+  scrollable_positioned_list: ^0.1.10
+  pull_to_refresh: ^2.0.0
   #flutter_swiper:
   #story_view: ^0.13.1 
   #geolocator: ^7.2.0
@@ -25,7 +28,7 @@ dependencies:
   #news_api_flutter_package: ^1.1.0
   #newsapi: ^1.0.9
   #flutter_inappwebview:
-  liquid_ui: 1.0.0+9
+  #liquid_ui: 1.0.0+9
   
   #local package
   newspackage:
@@ -51,9 +54,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  #assets:
+    #- images/not_available.jpg
+    #- images/twitter_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -16,6 +16,6 @@ class GetHeadLine {
 
   /// Callable class method
   // ignore: lines_longer_than_80_chars
-  Future<Either<Failure, List<Article>>?> call(String? country, String? category) async =>
+  Future<Either<Failure, ArticleResponse>?> call(String? country, String? category) async =>
       await _repository.getHeadLine(country, category);
 }

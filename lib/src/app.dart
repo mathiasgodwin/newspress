@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:newspress/src/features/newspress/views/news_home_page.dart';
 import 'package:newspress/src/features/newspress/views/screens/home_screen.dart';
 
 class NewsApp extends StatelessWidget {

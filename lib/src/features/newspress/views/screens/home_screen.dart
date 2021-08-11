@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:newspress/src/features/newspress/views/widgets/blur_status_bar.dart';
 import 'package:newspress/src/features/newspress/views/widgets/news_category_card.dart';
-import 'package:newspress/src/features/newspress/views/widgets/news_search_card.dart';
+import 'package:newspress/src/features/newspress/views/widgets/news_covid19_card.dart';
+import 'package:newspress/src/features/newspress/views/widgets/scroll_spy_card.dart';
 import 'package:newspress/src/features/newspress/views/widgets/settings_icon.dart';
 
 import 'swipe_page.dart';
@@ -16,7 +17,8 @@ class NewsHome extends StatefulWidget {
 
 class _NewsHomeUIState extends State<NewsHome>
     with SingleTickerProviderStateMixin {
-  AnimationController? _controller;
+  late AnimationController? _controller;
+  // ignore: non_constant_identifier_names
   Animation<double>? _animation;
   Animation<double>? _animation2;
 
@@ -93,21 +95,19 @@ class _NewsHomeUIState extends State<NewsHome>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    newsCardAtom(
+                    NewsCardAtom(
                         Color(0xfff37736),
                         Icons.business_center_rounded,
                         'Business',
-                        context,
-                        SwipePage(),
+                        NewsCard(1),
                         _w,
                         _animation,
                         _animation2),
-                    newsCardAtom(
+                    NewsCardAtom(
                       Color(0xfff37736),
                       Icons.science,
                       'Science',
-                      context,
-                      SwipePage(),
+                      NewsCard(2),
                       _w,
                       _animation,
                       _animation2,
@@ -120,21 +120,19 @@ class _NewsHomeUIState extends State<NewsHome>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    newsCardAtom(
+                    NewsCardAtom(
                         Color(0xfff37736),
                         Icons.chevron_right_outlined,
                         'General',
-                        context,
-                        SwipePage(),
+                        NewsCard(3),
                         _w,
                         _animation,
                         _animation2),
-                    newsCardAtom(
+                    NewsCardAtom(
                         Color(0xfff37736),
                         Icons.free_breakfast_outlined,
                         'Health',
-                        context,
-                        SwipePage(),
+                        NewsCard(4),
                         _w,
                         _animation,
                         _animation2),
@@ -146,21 +144,19 @@ class _NewsHomeUIState extends State<NewsHome>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    newsCardAtom(
+                    NewsCardAtom(
                         Color(0xfff37736),
                         Icons.theaters_sharp,
                         'Entertainment',
-                        context,
-                        SwipePage(),
+                        NewsCard(5),
                         _w,
                         _animation,
                         _animation2),
-                    newsCardAtom(
+                    NewsCardAtom(
                       Color(0xfff37736),
                       Icons.car_repair,
                       'Technology',
-                      context,
-                      SwipePage(),
+                      NewsCard(6),
                       _w,
                       _animation,
                       _animation2,
@@ -173,21 +169,20 @@ class _NewsHomeUIState extends State<NewsHome>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    newsCardAtom(
+                    NewsCardAtom(
                         Color(0xfff37736),
                         Icons.sports_football_rounded,
                         'Sports',
-                        context,
-                        SwipePage(),
+                        NewsCard(7),
                         _w,
                         _animation,
                         _animation2),
                     newsSearchCard(
-                        Colors.purple,
-                        Icons.search_rounded,
-                        'News Search',
+                        Colors.white,
+                        Icons.masks_rounded,
+                        'Covid19 extra',
                         context,
-                        SwipePage(),
+                        NewsCard(8),
                         _w,
                         _animation,
                         _animation2),
