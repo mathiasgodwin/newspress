@@ -14,14 +14,8 @@ class NewsCardAtom extends ConsumerWidget {
   final dynamic animation;
   final dynamic animation2;
 
-  NewsCardAtom(
-      this.color,
-      this.icon,
-      this.title,
-      this.route,
-      this.w,
-      this.animation,
-      this.animation2);
+  NewsCardAtom(this.color, this.icon, this.title, this.route, this.w,
+      this.animation, this.animation2);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -61,10 +55,14 @@ class NewsCardAtom extends ConsumerWidget {
             height: this.w / 2,
             width: this.w / 2.4,
             decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.orangeAccent.withOpacity(.3),
+                style: BorderStyle.solid,
+              ),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                    color: Color(0xff040039).withOpacity(.15), blurRadius: 99),
+                    color: Color(0xff040039).withOpacity(.12), blurRadius: 99, spreadRadius: .12),
               ],
               borderRadius: BorderRadius.all(
                 Radius.circular(25),

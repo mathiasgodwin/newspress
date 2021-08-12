@@ -66,7 +66,8 @@ class _NewsHomeUIState extends State<NewsHome>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'ℕ𝕖𝕨𝕤𝕡𝕣𝕖𝕤𝕤',
+                      // 'ℕ𝕖𝕨𝕤𝕡𝕣𝕖𝕤𝕤',
+                      'ℕewspress',
                       style: TextStyle(
                           fontSize: 27,
                           color: Colors.black.withOpacity(.6),

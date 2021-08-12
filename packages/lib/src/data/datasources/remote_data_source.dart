@@ -31,7 +31,7 @@ class RemoteDataSource implements IRemoteDataSource {
 
   @override
   Future<ArticleResponse>? getSearch(String? q) async {
-    const apikey = String.fromEnvironment('apiKey');
+     const apikey = String.fromEnvironment('apiKey');
     try {
       final url = "https://free-news.p.rapidapi.com/v1/search?q=$q&lang=en";
       
@@ -48,13 +48,13 @@ class RemoteDataSource implements IRemoteDataSource {
       );
 
       if (result.statusCode == 200) {
-        print(result.toString());
+        // print(result.toString());
         return ArticleResponse.fromJson(result.toString());
       } else {
         throw ServerException();
       }
     } catch (e) {
-      print('$e\n\n\n${StackTrace.current}');
+      // print('$e\n\n\n${StackTrace.current}');
       throw ServerException();
     }
   }
@@ -82,14 +82,13 @@ class RemoteDataSource implements IRemoteDataSource {
       // print(result);
 
       if (result.statusCode == 200) {
-        print(result.toString());
 
         return ArticleResponse.fromJson(result.toString());
       } else {
         throw ServerException();
       }
     } catch (e) {
-      print('$e\n\n\n${StackTrace.current}');
+      // print('$e\n\n\n${StackTrace.current}');
 
       throw ServerException();
     }

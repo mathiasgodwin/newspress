@@ -333,7 +333,7 @@ class LCardBody extends StatelessWidget {
           subTitle != null
               ? Padding(
                   padding: titleMargin ?? const EdgeInsets.only(bottom: 6.0),
-                  child: Text(
+                  child: subTitle == null ? Container():Text(
                     subTitle!,
                     maxLines: 4,
                     softWrap: true,

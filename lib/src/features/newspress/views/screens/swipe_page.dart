@@ -15,11 +15,11 @@ class SwipePage extends StatelessWidget {
       appBar: AppBar(
         brightness: Brightness.light,
         backgroundColor: Colors.white,
-        elevation: 50,
+        elevation: 15,
         centerTitle: true,
-        shadowColor: Colors.black.withOpacity(0.5),
+        shadowColor: Colors.black.withOpacity(0.4),
         title: Text(
-          'ℕ𝕖𝕨𝕤𝕡𝕣𝕖𝕤𝕤',
+          'ℕewspress',
           style: TextStyle(
               color: Colors.black.withOpacity(.7),
               fontWeight: FontWeight.w600,

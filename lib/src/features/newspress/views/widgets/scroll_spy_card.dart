@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import 'package:newspress/src/features/newspress/logic/newspress_provider.dart';
 import 'package:newspress/src/features/newspress/views/screens/swipe_page.dart';
 import 'package:newspress/src/features/newspress/views/widgets/error_card.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:newspress/src/features/newspress/views/widgets/loading_widget.dart';
+
 import 'cards.dart' show LCard, LCardBody, LCardFooter, LCardHeader, LCardImage;
-import 'package:newspress/src/features/newspress/logic/newspress_provider.dart';
 
 class NewsCard extends ConsumerWidget {
   final int? categoryNum;
@@ -111,59 +114,47 @@ class NewsCard extends ConsumerWidget {
 
     Widget infoCard(news) {
       return LCard(
-        border: Border.all(color: Colors.pink),
+        border: Border.all(color: Colors.greenAccent.withOpacity(.5)),
         elevation: 5.0,
         header: LCardHeader(title: news.title ?? ''),
-        footer: LCardFooter(
-          showSeperator: true,
-          actions: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/twitter_logo.png',
-                  width: 15,
-                  height: 15,
-                ),
-                Text(': '),
-                IconButton(
-                  icon: Text(news.twitterAccount ?? '',
-                  softWrap: true,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,),
-                  iconSize: 15,
-                  color: Colors.blue,
-                  onPressed: () {
-                    print(news.twitterAccount);
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
+        // footer: LCardFooter(
+        //   // showSeperator: true,
+        //   actions: <Widget>[
+
+        //         IconButton(
+        //           icon: Image.asset(
+        //             'assets/images/twitter_logo.png',
+        //             width: 20,
+        //             height: 20,
+        //           ),
+        //           iconSize: 15,
+        //           color: Colors.blue,
+        //           onPressed: () {
+        //             print(news.twitterAccount);
+        //           },
+        //         ),
+              
+            
+        //   ],
+        // ),
         image: LCardImage(
           image: news.media == null
               ? NetworkImage(
                   'http://www.newdesignfile.com/postpic/2015/02/funny-no-image-available-icon_68017.jpg')
               : NetworkImage(news.media),
-          fit: BoxFit.cover,
+          fit: BoxFit.fitWidth,
         ),
         body: LCardBody(
+          // titleMargin: EdgeInsets.zero,
           title: news.publishedDate.toString().substring(0, 16),
-          subTitle: news.summary ?? '',
+          subTitle: news.summary,
         ),
       );
     }
 
     dynamic providerCard({id, index}) {
       return state.when(
-          loading: () => id == 1
-              ? 1
-              : Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.lightBlue,
-                  ),
-                ),
+          loading: () => id == 1 ? 1 : LoadingWidget(),
           data: (newsList) {
             if (id == 1) {
               return newsList.pageSize;
@@ -172,7 +163,7 @@ class NewsCard extends ConsumerWidget {
             } else if (newsList.articles.isEmpty) {
               return errorCard(_w, 'Oops! There was an internal error.');
             } else if (id == 2) {
-              // TO-DO
+              // TO-DO: ##########
               Map<String?, int?> t = {
                 'total_page': newsList.totalPages,
                 'current_page': newsList.page
@@ -187,9 +178,13 @@ class NewsCard extends ConsumerWidget {
     // ignore: non_constant_identifier_names
     return SwipePage(
       nCard: SmartRefresher(
+        // scrollController: ScrollDragController,
         enablePullDown: true,
         // enablePullUp: true,
-        header: WaterDropHeader(),
+        header: WaterDropHeader(
+          waterDropColor: Colors.greenAccent.withOpacity(.5),
+          refresh: Text('Refreshing...'),
+        ),
         // footer: CustomFooter(
         //   builder: (BuildContext context, LoadStatus? mode) {
         //     Widget body;
