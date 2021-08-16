@@ -19,17 +19,12 @@ dependencies:
   flutter_riverpod: ^0.14.0
   freezed_annotation: ^0.14.2
   #custom_refresh_indicator: ^1.0.0
-  scrollable_positioned_list: ^0.1.10
+  #scrollable_positioned_list: ^0.1.10
   pull_to_refresh: ^2.0.0
-  #flutter_swiper:
-  #story_view: ^0.13.1 
-  #geolocator: ^7.2.0
   equatable: ^2.0.3
-  #news_api_flutter_package: ^1.1.0
-  #newsapi: ^1.0.9
-  #flutter_inappwebview:
-  #liquid_ui: 1.0.0+9
-  
+  flutter_inappwebview: ^5.3.2
+  getwidget: ^2.0.3
+  url_launcher: ^6.0.9  
   #local package
   newspackage:
     path: packages

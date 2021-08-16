@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'package:newspress/src/features/newspress/logic/newspress_provider.dart';
 import 'package:newspress/src/features/newspress/views/screens/swipe_page.dart';
 import 'package:newspress/src/features/newspress/views/widgets/error_card.dart';
 import 'package:newspress/src/features/newspress/views/widgets/loading_widget.dart';
-
-import 'cards.dart' show LCard, LCardBody, LCardFooter, LCardHeader, LCardImage;
 
 class NewsCard extends ConsumerWidget {
   final int? categoryNum;
@@ -113,43 +112,75 @@ class NewsCard extends ConsumerWidget {
     // }
 
     Widget infoCard(news) {
-      return LCard(
-        border: Border.all(color: Colors.greenAccent.withOpacity(.5)),
-        elevation: 5.0,
-        header: LCardHeader(title: news.title ?? ''),
-        // footer: LCardFooter(
-        //   // showSeperator: true,
-        //   actions: <Widget>[
-
-        //         IconButton(
-        //           icon: Image.asset(
-        //             'assets/images/twitter_logo.png',
-        //             width: 20,
-        //             height: 20,
-        //           ),
-        //           iconSize: 15,
-        //           color: Colors.blue,
-        //           onPressed: () {
-        //             print(news.twitterAccount);
-        //           },
-        //         ),
-              
-            
-        //   ],
-        // ),
-        image: LCardImage(
-          image: news.media == null
-              ? NetworkImage(
-                  'http://www.newdesignfile.com/postpic/2015/02/funny-no-image-available-icon_68017.jpg')
-              : NetworkImage(news.media),
-          fit: BoxFit.fitWidth,
+      var card = GFCard(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        boxFit: BoxFit.fitWidth,
+        titlePosition: GFPosition.start,
+        showImage: true,
+        image: news.media == null
+            ? Image.asset('assets/images/not_available.jpg')
+            : Image.network(news.media),
+        title: news.title == null
+            ? null
+            : GFListTile(
+                avatar: IconButton(
+                    icon: Image.asset(
+                      'assets/images/twitter_logo.png',
+                      width: 20,
+                      height: 20,
+                    ),
+                    iconSize: 15,
+                    color: Colors.blue,
+                    onPressed: () {
+                      print(news.twitterAccount);
+                    }),
+                title: Text(news.title),
+              ),
+        content: GFAccordion(
+          showAccordion: false,
+          textStyle: TextStyle(
+            fontSize: 13,
+          ),
+          title: '...',
+          // title: 'Publisher: ' + news.twitterAccount == null ? 'Unknown' : news.twitterAccount +  ':      Read more...',
+          // title: news.summary == null
+          //     ? ''
+          //     : news.summary.toString().substring(0, 20) + '...',
+          content: news.summary == null
+              ? null
+              : news.summary.toString().length > 175
+                  ? news.summary.toString().substring(0, 175) + '...'
+                  : news.summary,
+          // contentChild: Row(
+          //   children: <Widget>[
+          //     IconButton(
+          //       icon: Image.asset(
+          //         'assets/images/twitter_logo.png',
+          //         width: 20,
+          //         height: 20,
+          //       ),
+          //       iconSize: 15,
+          //       color: Colors.blue,
+          //       onPressed: () {
+          //         print(news.twitterAccount);
+          //       },
+          //     ),
+          //   ],
+          // ),
         ),
-        body: LCardBody(
-          // titleMargin: EdgeInsets.zero,
-          title: news.publishedDate.toString().substring(0, 16),
-          subTitle: news.summary,
+        buttonBar: GFButtonBar(
+          children: [
+            GFButtonBadge(
+                type: GFButtonType.outline2x,
+                text: 'Read more',
+                onPressed: () {
+                  print('');
+                })
+          ],
         ),
       );
+
+      return card;
     }
 
     dynamic providerCard({id, index}) {
@@ -172,12 +203,22 @@ class NewsCard extends ConsumerWidget {
             }
           },
           error: (error) =>
-              id == 1 ? 1 : errorCard(_w, 'No internet connection'));
+              id == 1 ? 1 : errorCard(_w, 'No internet connection')
+
+          // GFToast(
+          //   text: 'Make sure you\'re connected',
+          //   button: GFButton(
+          //     onPressed: _onRefresh(),
+          //     text: 'Retry',
+          //   ),
+          // );
+          );
     }
 
     // ignore: non_constant_identifier_names
     return SwipePage(
       nCard: SmartRefresher(
+        scrollDirection: Axis.vertical,
         // scrollController: ScrollDragController,
         enablePullDown: true,
         // enablePullUp: true,
@@ -206,8 +247,10 @@ class NewsCard extends ConsumerWidget {
         onRefresh: _onRefresh,
         // onLoading: _onLoading(providerCard(id: 2)),
         child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
           itemBuilder: (c, i) => providerCard(index: i, id: 0),
-          itemExtent: 600.0,
+          itemExtent: 700.0,
           itemCount: providerCard(id: 1),
         ),
       ),
