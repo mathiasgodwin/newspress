@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:newspress/src/features/newspress/views/widgets/inapp_webview.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'package:newspress/src/features/newspress/logic/newspress_provider.dart';
 import 'package:newspress/src/features/newspress/views/screens/swipe_page.dart';
 import 'package:newspress/src/features/newspress/views/widgets/error_card.dart';
-import 'package:newspress/src/features/newspress/views/widgets/loading_widget.dart';
 
 class NewsCard extends ConsumerWidget {
   final int? categoryNum;
@@ -146,11 +147,12 @@ class NewsCard extends ConsumerWidget {
           // title: news.summary == null
           //     ? ''
           //     : news.summary.toString().substring(0, 20) + '...',
-          content: news.summary == null
-              ? null
-              : news.summary.toString().length > 175
-                  ? news.summary.toString().substring(0, 175) + '...'
-                  : news.summary,
+          content: news.summary,
+          // content: news.summary == null
+          //     ? null
+          //     : news.summary.toString().length > 175
+          //         ? news.summary.toString().substring(0, 175) + '...'
+          //         : news.summary,
           // contentChild: Row(
           //   children: <Widget>[
           //     IconButton(
@@ -171,11 +173,24 @@ class NewsCard extends ConsumerWidget {
         buttonBar: GFButtonBar(
           children: [
             GFButtonBadge(
-                type: GFButtonType.outline2x,
-                text: 'Read more',
-                onPressed: () {
-                  print('');
-                })
+              type: GFButtonType.outline2x,
+              text: 'Read more',
+              onPressed: () {
+                HapticFeedback.lightImpact();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return WebViewer(
+                        selectedUrl: news.link,
+                        title: 'Newspress',
+                      );
+                      
+                    },
+                  ),
+                );
+              },
+            )
           ],
         ),
       );
@@ -185,7 +200,18 @@ class NewsCard extends ConsumerWidget {
 
     dynamic providerCard({id, index}) {
       return state.when(
-          loading: () => id == 1 ? 1 : LoadingWidget(),
+          loading: () => id == 1
+              ? 1
+              : Center(
+                  child: Container(
+                    width: _w / 2.5,
+                    height: _w / 2,
+                    child: GFLoader(
+                      type: GFLoaderType.circle,
+                      size: GFSize.LARGE,
+                    ),
+                  ),
+                ),
           data: (newsList) {
             if (id == 1) {
               return newsList.pageSize;
@@ -219,38 +245,19 @@ class NewsCard extends ConsumerWidget {
     return SwipePage(
       nCard: SmartRefresher(
         scrollDirection: Axis.vertical,
-        // scrollController: ScrollDragController,
         enablePullDown: true,
-        // enablePullUp: true,
         header: WaterDropHeader(
           waterDropColor: Colors.greenAccent.withOpacity(.5),
           refresh: Text('Refreshing...'),
         ),
-        // footer: CustomFooter(
-        //   builder: (BuildContext context, LoadStatus? mode) {
-        //     Widget body;
-        //     if (mode == LoadStatus.idle) {
-        //       body = Text("pull up load");
-        //     } else if (mode == LoadStatus.loading) {
-        //       body = Text('Loading');
-        //     } else if (mode == LoadStatus.failed) {
-        //       body = Text("Load Failed! Click retry!");
-        //     } else if (mode == LoadStatus.canLoading) {
-        //       body = Text("release to load more");
-        //     } else {
-        //       body = Text("No more Data");
-        //     }
-        //     return body;
-        //   },
-        // ),
         controller: _refreshController,
         onRefresh: _onRefresh,
         // onLoading: _onLoading(providerCard(id: 2)),
         child: ListView.builder(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
+          // scrollDirection: Axis.vertical,
+          // shrinkWrap: true,
           itemBuilder: (c, i) => providerCard(index: i, id: 0),
-          itemExtent: 700.0,
+          // itemExtent: 700.0,
           itemCount: providerCard(id: 1),
         ),
       ),

@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 
 Widget errorCard(w, message){
   double _w = w;
@@ -25,13 +24,13 @@ Widget errorCard(w, message){
                 Icon(
                     Icons.warning_amber_outlined,
                     color: Colors.orangeAccent.withOpacity(0.6),
-                    size: 70,
+                    size: GFSize.LARGE,
                   ),
 
                   Text(
                         message,
-                        maxLines: 10,
-                        // softWrap: true,
+                        maxLines: 1,
+                        softWrap: true,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 18,

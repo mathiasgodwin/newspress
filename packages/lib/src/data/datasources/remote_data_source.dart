@@ -3,18 +3,13 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:errors/errors.dart';
-// import 'package:newspackage/src/data/model/article.dart';
 import 'package:newspackage/src/data/models/article_response.dart';
-// import 'package:newsapi/newsapi.dart' show NewsApi;
-// import '';
+
 ///
 abstract class IRemoteDataSource {
   Future<ArticleResponse>? getHeadLine(String? country, String? category);
   Future<ArticleResponse>? getSearch(String? q);
 }
-
-///
-///
 
 ///
 class RemoteDataSource implements IRemoteDataSource {
@@ -31,6 +26,7 @@ class RemoteDataSource implements IRemoteDataSource {
 
   @override
   Future<ArticleResponse>? getSearch(String? q) async {
+     // ignore: lines_longer_than_80_chars
      const apikey = String.fromEnvironment('apiKey');
     try {
       final url = "https://free-news.p.rapidapi.com/v1/search?q=$q&lang=en";
@@ -48,13 +44,11 @@ class RemoteDataSource implements IRemoteDataSource {
       );
 
       if (result.statusCode == 200) {
-        // print(result.toString());
         return ArticleResponse.fromJson(result.toString());
       } else {
         throw ServerException();
       }
     } catch (e) {
-      // print('$e\n\n\n${StackTrace.current}');
       throw ServerException();
     }
   }
@@ -79,8 +73,6 @@ class RemoteDataSource implements IRemoteDataSource {
             }),
       );
 
-      // print(result);
-
       if (result.statusCode == 200) {
 
         return ArticleResponse.fromJson(result.toString());
@@ -88,8 +80,6 @@ class RemoteDataSource implements IRemoteDataSource {
         throw ServerException();
       }
     } catch (e) {
-      // print('$e\n\n\n${StackTrace.current}');
-
       throw ServerException();
     }
   }

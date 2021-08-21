@@ -1,17 +1,10 @@
-
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:newspress/src/features/newspress/views/screens/swipe_page.dart';
+import 'package:newspress/src/features/newspress/views/widgets/about_widget.dart';
 
-Widget settingsIcon(
-  BuildContext context, double _w
-) {
-  
-  // double _w = MediaQuery.of(context).size.width;
-
+Widget settingsIcon(BuildContext context, double _w) {
   return Padding(
     padding: EdgeInsets.fromLTRB(0, _w / 9.5, _w / 15, 0),
     child: Row(
@@ -20,19 +13,17 @@ Widget settingsIcon(
         InkWell(
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
-          onTap:null 
-          // () {
-          //   HapticFeedback.lightImpact();
-          //   Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: (context) {
-          //         return ;
-          //       },
-          //     ),
-          //   );
-          // },
-          ,
+          onTap: () {
+            HapticFeedback.lightImpact();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return About();
+                },
+              ),
+            );
+          },
           child: ClipRRect(
             borderRadius: BorderRadius.all(
               Radius.circular(99),
