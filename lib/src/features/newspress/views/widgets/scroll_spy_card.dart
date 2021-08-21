@@ -125,16 +125,26 @@ class NewsCard extends ConsumerWidget {
             ? null
             : GFListTile(
                 avatar: IconButton(
-                    icon: Image.asset(
-                      'assets/images/twitter_logo.png',
-                      width: 20,
-                      height: 20,
-                    ),
-                    iconSize: 15,
-                    color: Colors.blue,
-                    onPressed: () {
-                      print(news.twitterAccount);
-                    }),
+                  icon: Image.asset(
+                    'assets/images/twitter_logo.png',
+                    width: 20,
+                    height: 20,
+                  ),
+                  iconSize: 15,
+                  color: Colors.blue,
+                  onPressed: null,
+
+                  //() {
+                  // HapticFeedback.lightImpact();
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) {
+                  //   return news.twitterAccount == null ? null : WebViewer(
+                  //     selectedUrl: news.link,
+                  //     title: 'Newspress',
+                  //     );
+                  //   }));
+                  // }
+                ),
                 title: Text(news.title),
               ),
         content: GFAccordion(
@@ -173,6 +183,7 @@ class NewsCard extends ConsumerWidget {
         buttonBar: GFButtonBar(
           children: [
             GFButtonBadge(
+              color: Colors.blueAccent,
               type: GFButtonType.outline2x,
               text: 'Read more',
               onPressed: () {
@@ -185,7 +196,6 @@ class NewsCard extends ConsumerWidget {
                         selectedUrl: news.link,
                         title: 'Newspress',
                       );
-                      
                     },
                   ),
                 );

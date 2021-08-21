@@ -27,6 +27,8 @@ class NewsApp extends StatelessWidget {
   }
 }
 
+
+
 class Init {
   Init._();
   static final instance = Init._();

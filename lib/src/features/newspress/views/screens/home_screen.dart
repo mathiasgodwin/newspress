@@ -97,7 +97,7 @@ class _NewsHomeUIState extends State<NewsHome>
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     NewsCardAtom(
-                        Color(0xfff37736),
+                        Colors.greenAccent,
                         Icons.business_center_rounded,
                         'Business',
                         NewsCard(1),
@@ -130,7 +130,7 @@ class _NewsHomeUIState extends State<NewsHome>
                         _animation,
                         _animation2),
                     NewsCardAtom(
-                        Color(0xfff37736),
+                        Colors.greenAccent,
                         Icons.free_breakfast_outlined,
                         'Health',
                         NewsCard(4),
@@ -146,7 +146,7 @@ class _NewsHomeUIState extends State<NewsHome>
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     NewsCardAtom(
-                        Color(0xfff37736),
+                        Colors.greenAccent,
                         Icons.theaters_sharp,
                         'Entertainment',
                         NewsCard(5),

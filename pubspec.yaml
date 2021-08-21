@@ -25,7 +25,7 @@ dependencies:
   flutter_webview_plugin: ^0.4.0
   getwidget: ^2.0.3
   animated_text_kit: ^4.2.1
-  #url_launcher: ^6.0.9  
+  url_launcher: ^6.0.9  
   #local package
   newspackage:
     path: packages
@@ -44,9 +44,9 @@ flutter_icons:
 flutter_native_splash:
   android12: false
   image: assets/icon/newspress_icon.png
-  android: true
-  ios: true
-  web: true
+  android: false
+  ios: false
+  web: false
   color: "#FFFFFF"
 
 

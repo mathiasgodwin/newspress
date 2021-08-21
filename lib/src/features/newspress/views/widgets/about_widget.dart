@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class About extends StatelessWidget {
   @override
@@ -99,6 +100,12 @@ class About extends StatelessWidget {
                     leading: Icon(Icons.person),
                     title: Text("Mathias Godwin"),
                     subtitle: Text("\n+2347061009672 \ngodwinsaint6@gmail.com"),
+                    onTap: (){
+                      launch('mailto:godwinsaint6@gmail.com');
+                    },
+                    onLongPress: (){
+                      launch('tel:+2347061009672');
+                    },
                   ),
                 ],
               )),
@@ -149,7 +156,13 @@ class About extends StatelessWidget {
                   ListTile(
                     leading: Icon(Icons.person_outline_rounded),
                     title: Text("Gaurav Tantuway"),
-                    subtitle: Text("+919752614355"),
+                    subtitle: Text("\n+919752614355 \ndev.gauravtantuway@gmail.com"),
+                    onTap: (){
+                      launch('mailto:dev.gauravtantuway@gmail.com');
+                    },
+                    onLongPress: (){
+                      launch('tel:+919752614355');
+                    },
                   ),
                 ],
               )),

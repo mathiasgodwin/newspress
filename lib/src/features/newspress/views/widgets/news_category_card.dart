@@ -62,7 +62,7 @@ class NewsCardAtom extends ConsumerWidget {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                    color: Color(0xff040039).withOpacity(.12), blurRadius: 99, spreadRadius: .12),
+                    color: Colors.greenAccent.withOpacity(.12), blurRadius: 99, spreadRadius: .12),
               ],
               borderRadius: BorderRadius.all(
                 Radius.circular(25),
@@ -104,9 +104,3 @@ class NewsCardAtom extends ConsumerWidget {
   }
 }
 
-
-// Widget newsCardAtom(Color color, IconData icon, String title,
-//     BuildContext context, Widget route, double _w, dynamic _animation, dynamic _animation2) {
-//   // double _w = MediaQuery.of(context).size.width;
-
-  
