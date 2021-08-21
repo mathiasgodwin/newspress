@@ -44,9 +44,9 @@ flutter_icons:
 flutter_native_splash:
   android12: false
   image: assets/icon/newspress_icon.png
-  android: false
-  ios: false
-  web: false
+  android: true
+  ios: true
+  web: true
   color: "#FFFFFF"
 
 

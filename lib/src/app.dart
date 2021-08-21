@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:newspress/src/features/newspress/views/screens/home_screen.dart';
-import 'package:newspress/src/features/newspress/views/widgets/splashscreen_widget.dart';
 
 class NewsApp extends StatelessWidget {
   @override
@@ -11,8 +10,7 @@ class NewsApp extends StatelessWidget {
       builder: (context, AsyncSnapshot snapshot) {
         // Show splash screen while waiting for app resources to load:
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false, home: SplashScreen());
+          return MaterialApp(debugShowCheckedModeBanner: false, home: Splash());
         } else {
           // Loading is done, return the app:
           return MaterialApp(
@@ -27,15 +25,23 @@ class NewsApp extends StatelessWidget {
   }
 }
 
-
+class Splash extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
+      body: Center(child: Image.asset('assets/icon/newspress_icon.png')),
+    );
+  }
+}
 
 class Init {
   Init._();
   static final instance = Init._();
 
   Future initialize() async {
-    await Future.delayed(Duration(seconds: 5));
-    // This is a bad practice, I'm only learning
-    // I had to add this line, Just to test alot of things out :)
+  /// Whatever might be needed to be done before
+  /// the App Home Screen goes under here!
+
   }
 }
