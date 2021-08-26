@@ -1,7 +1,6 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:dartz/dartz.dart';
 import 'package:errors/errors.dart';
-// import 'package:newspackage/src/data/model/article.dart';
 import 'package:newspackage/src/data/models/article_response.dart';
 
 import 'package:newspackage/src/domain/repositories/inewspress_repository.dart';

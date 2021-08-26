@@ -1,7 +1,4 @@
-// To parse this JSON data, do
-//
-//     final articleResponse = articleResponseFromMap(jsonString);
-
+// Generated using QuickType --- https://app.quicktype.io/?l=dart
 import 'dart:convert';
 
 class ArticleResponse {

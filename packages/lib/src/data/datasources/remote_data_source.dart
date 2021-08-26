@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:errors/errors.dart';
 import 'package:newspackage/src/data/models/article_response.dart';

@@ -43,11 +43,11 @@ $ flutter build apk -v
 
   + **Clean code Architecture** and **SOLID** principle _(I'm still learning most of this things, I hope to get a good grasp of this principle along the run.)_.
 
-  + **QuickType** for generation of model for the [apis](https://newscatcherapi.com).
+  + [**QuickType**](https://app.quicktype.io/?l=dart) for generation of model for the [apis](https://newscatcherapi.com).
 
-  + **Errors:** A package from [NoScopeDev](git://github.com/NoScopeDevs/errors) for handling errors.
+  + **Errors:** A package from [NoScopeDev](https://github.com/NoScopeDevs/errors) for handling errors.
 
-  + **Network_manager:** A package also from [NoScopeDev](git://github.com/NoScopeDevs/network_manager)
+  + **Network_manager:** A package also from [NoScopeDev](https://github.com/NoScopeDevs/network_manager)
   
   + **GetWidget:** This package is wonderfully packed with a lot of goodies. Many thanks to the developers. check it out [here](https://getwidget.dev/)
 

@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+// ignore: implementation_imports
 import 'package:newspackage/src/data/models/article_response.dart';
-// import 'package:newspackage/src/data/model/article.dart';
-
 
 part 'newspress_state.freezed.dart';
 
@@ -23,8 +22,4 @@ abstract class NewspressState with _$NewspressState {
 
   /// Error when loading data state
   const factory NewspressState.error([String? message]) = _NewspressError;
-
-    // bool get isLoading => this is _NewspressLoading;
-
-
 }

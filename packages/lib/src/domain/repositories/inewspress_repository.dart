@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:errors/errors.dart';
-// import 'package:newspackage/src/data/model/article.dart';
 import 'package:newspackage/src/data/models/article_response.dart';
 
 /// Repository interface for newspress

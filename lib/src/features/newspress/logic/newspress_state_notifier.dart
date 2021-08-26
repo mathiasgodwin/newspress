@@ -4,14 +4,6 @@ part of 'newspress_provider.dart';
 class NewspressNotifier extends StateNotifier<NewspressState> {
   /// Base constructor expects StateNotifier use_cases to
   // /// read its usecases and also defines inital state
-  // NewspressNotifier(
-  //     {GetHeadLine? getHeadLine,
-  //     GetSearch? getSearch,
-  //     // NewspressState? loading
-  //     })
-  //     : _getHeadLine = getHeadLine!,
-  //       _getSearch = getSearch!,
-  //       super(NewspressState);
 
   NewspressNotifier(
       {GetHeadLine? getHeadLine, GetSearch? getSearch, NewspressState? state})
@@ -25,7 +17,7 @@ class NewspressNotifier extends StateNotifier<NewspressState> {
   Future<void> getHeadLine(country, category) async {
     state = NewspressState.loading();
     final result = await _getHeadLine(country, category);
-
+    
     result!.fold((error) => state = NewspressState.error(error.toString()),
         (news) => state = NewspressState.data(news: news));
   }
